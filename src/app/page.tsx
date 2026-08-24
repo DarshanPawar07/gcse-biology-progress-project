@@ -5,6 +5,8 @@ import { CoverageStrip } from "@/components/CoverageStrip";
 import { NextUpCard } from "@/components/NextUpCard";
 import { TopicCard } from "@/components/TopicCard";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   const now = new Date();
   const { student, topics } = progressData;
