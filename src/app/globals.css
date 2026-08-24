@@ -37,9 +37,16 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(22, 33, 28, 0.05) 1px,
+      transparent 0
+    );
+  background-size: 22px 22px;
   color: var(--ink);
   font-family: var(--font-body);
+  font-feature-settings: "cv11", "ss01";
 }
 
 .font-display {
@@ -48,6 +55,27 @@ body {
 
 .font-mono {
   font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

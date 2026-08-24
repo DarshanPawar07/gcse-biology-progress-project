@@ -5,6 +5,9 @@ import { CoverageStrip } from "@/components/CoverageStrip";
 import { NextUpCard } from "@/components/NextUpCard";
 import { TopicCard } from "@/components/TopicCard";
 
+// Every date/staleness figure on this page is derived from "now", computed
+// once per request on the server. Forcing dynamic rendering (rather than
+// static prerendering) means that snapshot is never stale.
 export const dynamic = "force-dynamic";
 
 export default function Home() {
@@ -30,8 +33,14 @@ export default function Home() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((topic) => (
-            <TopicCard key={topic.id} topic={topic} now={now} />
+          {rest.map((topic, i) => (
+            <div
+              key={topic.id}
+              className="animate-rise h-full"
+              style={{ animationDelay: `${140 + i * 40}ms` }}
+            >
+              <TopicCard topic={topic} now={now} />
+            </div>
           ))}
         </div>
       </section>

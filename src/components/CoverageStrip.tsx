@@ -25,7 +25,8 @@ export function CoverageStrip({ topics }: { topics: Topic[] }) {
   return (
     <section
       aria-label="Overall syllabus coverage"
-      className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6"
+      className="animate-rise rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6"
+      style={{ animationDelay: "40ms" }}
     >
       <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-4">

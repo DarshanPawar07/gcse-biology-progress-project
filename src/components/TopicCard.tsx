@@ -8,7 +8,7 @@ export function TopicCard({ topic, now }: { topic: Topic; now: Date }) {
   const stale = daysSince(topic.lastStudied, now);
 
   return (
-    <article className="flex flex-col justify-between rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 transition-shadow hover:shadow-sm">
+    <article className="group flex h-full flex-col justify-between rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--brand)]/25 hover:shadow-[0_10px_24px_-16px_rgba(22,33,28,0.25)]">
       <div>
         <div className="flex items-start justify-between gap-3">
           <h3 className="font-display text-lg font-medium leading-snug text-[var(--ink)]">
@@ -32,13 +32,13 @@ export function TopicCard({ topic, now }: { topic: Topic; now: Date }) {
           <div className="mt-4">
             <div className="flex items-baseline justify-between">
               <span className="text-xs text-[var(--ink-muted)]">Mastery</span>
-              <span className="font-mono text-sm font-medium" style={{ color: meta.color }}>
+              <span className="num font-mono text-sm font-medium" style={{ color: meta.color }}>
                 {topic.mastery}%
               </span>
             </div>
             <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-[var(--not-started-soft)]">
               <div
-                className="h-full rounded-full"
+                className="h-full rounded-full transition-[width] duration-500 ease-out"
                 style={{ width: `${topic.mastery}%`, backgroundColor: meta.color }}
               />
             </div>
@@ -49,13 +49,13 @@ export function TopicCard({ topic, now }: { topic: Topic; now: Date }) {
       <dl className="mt-5 flex items-center justify-between border-t border-[var(--line)] pt-3">
         <div>
           <dt className="text-[11px] text-[var(--ink-muted)]">Questions</dt>
-          <dd className="font-mono text-sm text-[var(--ink)]">
+          <dd className="num font-mono text-sm text-[var(--ink)]">
             {topic.questionsAttempted}
           </dd>
         </div>
         <div className="text-right">
           <dt className="text-[11px] text-[var(--ink-muted)]">Last studied</dt>
-          <dd className="font-mono text-sm text-[var(--ink)]">
+          <dd className="num font-mono text-sm text-[var(--ink)]">
             {notStarted ? "—" : `${stale}d ago`}
           </dd>
         </div>
